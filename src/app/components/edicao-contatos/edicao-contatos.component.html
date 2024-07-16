@@ -1,0 +1,45 @@
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+            <h3>Edição de contatos</h3>
+            <p>Preencha os campos para alterar os dados do contato.</p>
+
+            <div *ngIf="mensagem != ''" class="alert alert-primary alert-dismissible fade show" role="alert">
+                <strong>{{ mensagem }}</strong>
+                <button (click)="mensagem = ''" type="button" class="btn-close" aria-label="Close"></button>
+            </div>
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label>Nome do produto:</label>
+                        <input type="text" class="form-control" formControlName="nome" />
+                        <div class="text-danger" *ngIf="f['nome'].touched && f['nome'].invalid">
+                            Por favor, informe o nome do contato.
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Preço:</label>
+                        <input type="text" class="form-control" formControlName="email" />
+                        <div class="text-danger" *ngIf="f['email'].touched && f['email'].invalid">
+                            Por favor, informe o email do contato.
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Quantidade:</label>
+                        <input type="text" class="form-control" formControlName="telefone" />
+                        <div class="text-danger" *ngIf="f['telefone'].touched && f['telefone'].invalid">
+                            Por favor, informe a telefone do contato.
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <input type="submit" class="btn btn-primary" value="Salvar Alterações"
+                            [disabled]="form.invalid" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
